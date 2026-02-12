@@ -28,7 +28,7 @@ Para criar o seu Personal Access Token siga os passos abaixo:
 1. Na esqueda clique na opção "Personal access tokens" e dps clique em "Tokens (classic)";
 1. Clique em "Generate new token" e depois em "Generate new token (classic)";
 1. Na opção "Note" coloque o nome que você deseja para seu PAT;
-1. na Opção "Expiration" coloque o tempo que você deseja manter esse código ativo;
+1. Na Opção "Expiration" coloque o tempo que você deseja manter esse código ativo;
 1. Após isso selecione a opção "Repo";
 1. Por fim clique em "Generate token";
 1. Na sua tela vai aparecer o código, copie ele para seu uso (Observação: esse código só aparecerá nesse momento, caso não salve ou guarde ele, será necessário gerar novamente o token).
@@ -50,3 +50,12 @@ git config --global credential.helper store
 Obs: Essa opção não é recomendada para pcs compartilhados por questão de segurança
 
 ## Qual a diferença entre git merge e git rebase?
+O git merge e o git rebase tem a função de incorporar mudanças de uma branch para outra. Porém a forma que essa incorporação é realiza é diferente, assim como a forma que essa mudança fica no histórico.
+
+O git merge manda o conteúdo da branch de origem para a branch de destino criando um commit de merge na branch de destino que une os históricos das duas ramificações. A vantagem dessa forma é que ela preserva o histórico real e não altera commits existentes, porém essa opção pode "poluir" a interface com muitos merge branchs, sendo essa opção ideal pra quem quer manter o histórico mais fiel possivel
+
+Já o git rebase replica os commits da branch atual em cima da outra branch. 
+
+O git rebase move ou "reaplica" os commits da sua branch atual em cima de outra branch. nessa opção o histórico fica linear, não mostrando as ramificações, tem a vantagem de deixar a interface de commits mais limpa e linear, porém reescreve o histórico, o que pode causar problemas quando utilizado em equipes. Ele é util se você deseja uma árvore de commits mais limpa e clara, e não precisa manter um histórico tão preciso. 
+
+
