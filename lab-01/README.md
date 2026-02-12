@@ -34,5 +34,19 @@ Para criar o seu Personal Access Token siga os passos abaixo:
 1. Na sua tela vai aparecer o código, copie ele para seu uso (Observação: esse código só aparecerá nesse momento, caso não salve ou guarde ele, será necessário gerar novamente o token).
 
 ### Salvar em cache as credenciais do PAT
+Podemos salvar a nossa chave PAT em cache, essa opção é útil pois quando estamos utilizando o git na máquina e precisamos dar git push para o GitHub o git solicita o seu nome de usuário e a sua chave PAT, para evitar que tenhamos que colocar a chave a cada git push, podemos utilizar um comando para salvar as credenciais no cache do computador
+
+Para salvar em cache a sua credencial PAT utilize o código abaixo:
+```bash
+git config --global credential.helper 'cache --timeout=3600'
+```
+obs: esse comando faz a credencial ficar salva no cache por 1 hora (3600 segundos) caso queira salvar por menos ou mais tempo, basta alterar o número.
+
+Caso você queira deixar a credencial salva para sempre no seu pc, utilize o comando abaixo:
+
+```bash
+git config --global credential.helper store
+```
+Obs: Essa opção não é recomendada para pcs compartilhados por questão de segurança
 
 ## Qual a diferença entre git merge e git rebase?
