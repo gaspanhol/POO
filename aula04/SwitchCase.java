@@ -1,5 +1,3 @@
-package aula04;
-
 public class SwitchCase {
     void main(){
         int i=1;

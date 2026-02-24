@@ -1,5 +1,3 @@
-package aula04;
-
 public class PrimeiroJava{
     void main(){
         IO.println("Olá, mundo!");
