@@ -8,47 +8,37 @@ public class Horario {
 
     //métodos
 
+    // Construtor padrão
     public Horario() {
         this.hora = 0;
         this.minutos = 0;
         this.segundos = 0;
     }
 
-    public boolean validaHora (int hora) {
-        return (hora <= 24 || hora >= 0 ) ? true : false;
+    private boolean validaHora (int hora) {
+        return hora <= 23 && hora >= 0;
     }
 
-    public boolean validaMinutos (int minutos) {
-        return (minutos <= 59 || hora >= 0 ) ? true : false;
+    private boolean validaMinutos (int minutos) {
+        return minutos <= 59 && hora >= 0;
     }
 
-    public boolean validaSegundos (int segundos) {
-        return (segundos <= 24 || segundos >= 0 ) ? true : false;
+    private boolean validaSegundos (int segundos) {
+        return segundos <= 59 && segundos >= 0;
     }
 
-    //TODO fazer o construtor de hora
     public Horario(int hora) {
-
+        this(hora,0,0);
     }
 
-    //TODO refazer o construtor de hora e minutos
     public Horario(int hora, int minutos) {
-        if(hora > 24 || hora < 0 || minutos > 59 || minutos < 0){
-            this.hora = 0;
-            this.minutos = 0;
-        } else {
-            this.hora = hora;
-            this.minutos = minutos;
-        }
+        this(hora,minutos,0);
     }
 
-    //TODO refazer o construtor de hora, minuto e segundos
+    //Construtor de hora, minuto e segundos
     public Horario(int hora, int minutos, int segundos) {
-        if(hora > 24 || hora < 0 || minutos > 59 || minutos < 0 || segundos > 59 || segundos < 0){
-            this.hora = 0;
-            this.minutos = 0;
-            this.segundos = 0;
-        } else {
+        this();
+        if(validaHora(hora) && validaMinutos(minutos) && validaSegundos(segundos)){
             this.hora = hora;
             this.minutos = minutos;
             this.segundos = segundos;
@@ -56,32 +46,27 @@ public class Horario {
     }
 
     public boolean setHora(int hora) {
-        if (hora < 0 || hora > 24) {
-            return false;
-        } else {
+        if (validaHora(hora)) {
             this.hora = hora;
             return true;
         }
+        return false;
     }
 
-    //TODO refazer setMinutos
     public boolean setMinutos(int minutos) {
-        if (minutos < 0 || minutos > 59) {
-            return false;
-        } else {
+        if (validaMinutos(minutos)) {
             this.minutos = minutos;
             return true;
         }
+        return false;
     }
 
-    //TODO refazer setSegundos
     public boolean setSegundos(int segundos) {
-        if (segundos < 0 || segundos > 59) {
-            return false;
-        } else {
+        if (validaSegundos(segundos)) {
             this.segundos = segundos;
             return true;
         }
+        return false;
     }
 
     public String toString() {
@@ -92,8 +77,28 @@ public class Horario {
         return sb.toString();
     }
 
-    private String converterParaExtenso(int valor) {
+    public String tempoPorExtenso(){
+        String hora = extensoValor(this.hora);
+        String minutos = extensoValor(this.minutos);
+        String segundos = extensoValor(this.segundos);
+        return hora + ", " + minutos + ", " + segundos;
+    }
 
+    private String extensoValor (int valor){
+       if (valor < 20){
+           return converterParaExtenso(valor);
+       } else {
+           int dezena = valor/10;
+           int unidade = valor % 10;
+           if (unidade == 0) {
+               return converterParaExtenso(dezena);
+           } else {
+               return converterParaExtenso(dezena) + " e " + converterParaExtenso(unidade);
+           }
+       }
+    }
+
+    private String converterParaExtenso(int valor) {
         return switch (valor){
             case 1 -> "um";
             case 2 -> "dois";
