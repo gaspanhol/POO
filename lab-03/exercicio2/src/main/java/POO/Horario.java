@@ -71,17 +71,25 @@ public class Horario {
 
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append(hora).append(":");
-        sb.append(minutos).append(":");
-        sb.append(segundos);
+        sb.append(verificaZeroAntes(this.hora)).append(hora).append(":");
+        sb.append(verificaZeroAntes(this.minutos)).append(minutos).append(":");
+        sb.append(verificaZeroAntes(this.segundos)).append(segundos);
         return sb.toString();
+    }
+
+    private String verificaZeroAntes (int tempo) {
+        if (tempo < 10) {
+            return "0";
+        } else {
+            return "";
+        }
     }
 
     public String tempoPorExtenso(){
         String hora = extensoValor(this.hora);
         String minutos = extensoValor(this.minutos);
         String segundos = extensoValor(this.segundos);
-        return hora + ", " + minutos + ", " + segundos;
+        return hora + " horas, " + minutos + " minutos, " + segundos + " segundos";
     }
 
     private String extensoValor (int valor){
@@ -93,7 +101,7 @@ public class Horario {
            if (unidade == 0) {
                return converterParaExtenso(dezena);
            } else {
-               return converterParaExtenso(dezena) + " e " + converterParaExtenso(unidade);
+               return converterParaExtenso(dezena*10) + " e " + converterParaExtenso(unidade);
            }
        }
     }
@@ -102,7 +110,7 @@ public class Horario {
         return switch (valor){
             case 1 -> "um";
             case 2 -> "dois";
-            case 3 -> "três";
+            case 3 -> "tres";
             case 4 -> "quatro";
             case 5 -> "cinco";
             case 6 -> "seis";
@@ -125,6 +133,13 @@ public class Horario {
             case 50 -> "cinquenta";
             default -> "";
         };
+    }
 
+    public int horarioEmSegundos (){
+        return (this.hora * 3600) + (this.minutos * 60) + this.segundos;
+    }
+
+    public int diferencaHorarios (Horario horario) {
+        return this.horarioEmSegundos() - horario.horarioEmSegundos();
     }
 }
