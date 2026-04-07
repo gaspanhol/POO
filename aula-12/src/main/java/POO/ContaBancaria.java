@@ -28,7 +28,7 @@ public class ContaBancaria {
 
     //Sacar:
     public boolean sacar (double valor) {
-        if (valor >= this.saldo){
+        if (valor <= this.saldo){
             saldo -= valor;
             return true;
         } else {

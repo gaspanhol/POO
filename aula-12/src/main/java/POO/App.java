@@ -15,9 +15,9 @@ public class App {
     void menu(int opcao){
         switch (opcao) {
             case 1 -> {cadastrar();}
-            case 2 -> {}
-            case 3 -> {}
-            case 4 -> {}
+            case 2 -> {listarContas();}
+            case 3 -> {depositarEmConta();}
+            case 4 -> {SacarDeConta();}
             case 5 -> {}
         }
     }
@@ -26,17 +26,44 @@ public class App {
         var titular = IO.readln("Nome do titular: ");
         var numero = IO.readln("Número da conta: ");
         var saldo = Double.parseDouble(IO.readln("Saldo inicial: "));
-
         var novaConta = new ContaBancaria(titular, numero, saldo);
-
         this.contas.add(novaConta);
+        IO.println("Conta Cadastrada");
+    }
+
+    void listarContas() {
+        contas.forEach(IO::println);
+    }
+
+    void depositarEmConta() {
+        var numero = IO.readln("Número da conta para deposito: ");
+        for (ContaBancaria elemento : contas) {
+            if (elemento.getNumero().equals(numero)) {
+                double valor = Integer.parseInt(IO.readln("Valor: "));
+                elemento.depositar(valor);
+                IO.println("Deposito realizado no valor de R$ " + valor);
+            }
+        }
+    }
+
+    void SacarDeConta() {
+        var numero = IO.readln("Número da conta para saque: ");
+        for (ContaBancaria elemento : contas) {
+            if (elemento.getNumero().equals(numero)) {
+                double valor = Integer.parseInt(IO.readln("Valor: "));
+                if (valor > elemento.getSaldo()){
+                    elemento.sacar(valor);
+                    IO.println("Sacado o valor de R$ " + valor);
+                } else {
+                    IO.println("Não foi possível sacar pois o valor é maior que o saldo");
+                }
+            }
+        }
     }
 
     static void main() {
-
         //coleção para guardar contas bancárias:
         App app = new App();
-        app.menu(1);
         //..:: Menu ::..
         // 1 - Cadastrar conta
         // 2 - listar todas contas
@@ -55,6 +82,7 @@ public class App {
                     5 - Sair
                     """);
             opcao = Integer.parseInt(IO.readln("Entre com uma opção: "));
+            app.menu(opcao);
         } while (opcao != 5);
 
 
