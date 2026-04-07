@@ -19,6 +19,7 @@ public class App {
             case 3 -> {depositarEmConta();}
             case 4 -> {SacarDeConta();}
             case 5 -> {}
+            default -> {IO.println("Número inválido");}
         }
     }
 
