@@ -42,9 +42,16 @@ public class App {
             if (elemento.getNumero().equals(numero)) {
                 double valor = Integer.parseInt(IO.readln("Valor: "));
                 elemento.depositar(valor);
-                IO.println("Deposito realizado no valor de R$ " + valor);
+                if (valor > 0){
+                    IO.println("Deposito realizado no valor de R$ " + valor);
+                } else {
+                    IO.println("Não foi possivel realizar o deposito");
+                }
+
+                return;
             }
         }
+        IO.println("Número de conta não encontrado.");
     }
 
     void SacarDeConta() {
@@ -58,8 +65,10 @@ public class App {
                 } else {
                     IO.println("Não foi possível sacar pois o valor é maior que o saldo");
                 }
+                return;
             }
         }
+        IO.println("Número de conta não encontrado.");
     }
 
     static void main() {
