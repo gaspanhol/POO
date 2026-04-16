@@ -43,7 +43,7 @@ classDiagram
     
     direction LR
     
-    Livro "1" o-- "1..." Capitulos
+    Livro "1" *-- "1..." Capitulo
     
     class Livro{
         - String titulo
