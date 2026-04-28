@@ -51,7 +51,7 @@ classDiagram
     }
     
     class Email {
-        -dados: HashMap<String><String>
+        -email: HashMap<String><String>
         +add(rotulo: String, valor: String): boolean
         +remove(rotulo: String): boolean
         +update(rotulo: String, valor: String): boolean
@@ -59,7 +59,7 @@ classDiagram
     }
     
     class Telefones {
-        -dados: HashMap<String><String>
+        -telefones: HashMap<String><String>
         +add(rotulo: String, valor: String): boolean
         +remove(rotulo: String): boolean
         +update(rotulo: String, valor: String): boolean
