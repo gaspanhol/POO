@@ -1,5 +1,7 @@
 package POO;
 
+import javax.swing.text.MaskFormatter;
+import java.text.ParseException;
 import java.util.HashMap;
 
 public class Telefones {
@@ -42,10 +44,30 @@ public class Telefones {
         return valor.matches(eR);
     }
 
+    public String formata(String mascara, String valor){
+        MaskFormatter mask = null;
+        String resultado = "";
+        try {
+            mask = new MaskFormatter(mascara);
+            mask.setValueContainsLiteralCharacters(false);
+            mask.setPlaceholderCharacter('_');
+            resultado = mask.valueToString(valor);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
     @Override
     public String toString() {
-        //TODO fazer o toString de telefones com a mascara dos slides
-        return telefones.toString();
+        final StringBuilder sb = new StringBuilder();
+        telefones.forEach((rotulo, valor) -> {
+            sb.append(rotulo)
+                    .append(": ")
+                    .append(this.formata("+## (##) #####-####",valor))
+                    .append("\n");
+        });
+        return sb.toString();
     }
     
 }

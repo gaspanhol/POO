@@ -44,7 +44,13 @@ public class Email {
 
     @Override
     public String toString() {
-        //TODO fazer o toString de emails
-        return email.toString();
+        final StringBuilder sb = new StringBuilder();
+        email.forEach((rotulo, valor) -> {
+            sb.append(rotulo)
+                    .append(": ")
+                    .append(valor)
+                    .append("\n");
+        });
+        return sb.toString();
     }
 }
