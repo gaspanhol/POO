@@ -34,12 +34,12 @@ classDiagram
         +toString(): String
     }
     
-    class Contatos {
+    class Contato {
         -nome: String
         -sobrenome: String
         -dataNasc: LocalDate
-        -telefones: ColecaoTelefone
-        -emails: ColecaoEmail
+        -telefones: Telefones
+        -emails: Email
         +Contato(nome: String, sobrenome: String, dN : LocalDate)
         +addTelefone(rotulo: String, valor: String): boolean
         +addEmail(rotulo: String, valor: String): boolean

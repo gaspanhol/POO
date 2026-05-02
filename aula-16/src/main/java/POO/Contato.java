@@ -2,7 +2,7 @@ package POO;
 
 import java.time.LocalDate;
 
-public class Contatos {
+public class Contato {
 
     private String nome;
     private String sobrenome;
@@ -34,10 +34,12 @@ public class Contatos {
         this.dataNasc = dataNasc;
     }
 
-    public Contatos(String nome, String sobrenome, LocalDate dataNasc) {
+    public Contato(String nome, String sobrenome, LocalDate dataNasc) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.dataNasc = dataNasc;
+        this.telefone = new Telefones();
+        this.email = new Email();
     }
 
     public boolean addTelefone (String rotulo, String numero) {
@@ -49,7 +51,7 @@ public class Contatos {
     }
 
     public boolean removeTelefone (String rotulo){
-        return removeTelefone(rotulo);
+        return telefone.remove(rotulo);
     }
 
     public boolean removeEmail(String rotulo){
@@ -57,7 +59,7 @@ public class Contatos {
     }
 
     public boolean updateTelefone (String rotulo, String numero){
-        return updateTelefone(rotulo, numero);
+        return telefone.update(rotulo, numero);
     }
 
     public boolean updateEmail (String rotulo, String email){
@@ -70,7 +72,7 @@ public class Contatos {
                 "Nome =  " + nome + "\n" +
                 "Sobrenome = " + sobrenome + "\n" +
                 "Data de nascimento = " + dataNasc + "\n" +
-                "Telefone = " + telefone.toString() + "\n" +
-                "Email = " + email.toString() + "\n";
+                "Telefone = " + ((telefone != null) ? telefone.toString() : "Nenhum telefone cadastrado") + "\n" +
+                "Email = " + ((email != null) ? email.toString() : "Nenhum email cadastrado") + "\n";
     }
 }

@@ -19,6 +19,11 @@ public class Email {
         }
     }
 
+    private boolean verificarEmail (String valor){
+        String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
+        return valor.matches(eR);
+    }
+
     public boolean remove (String rotulo) {
         if (email.containsKey(rotulo)) {
             email.remove(rotulo);
@@ -30,16 +35,11 @@ public class Email {
 
     public boolean update(String rotulo, String valor) {
         if (email.containsKey(rotulo) && verificarEmail(valor)) {
-            email.replace(rotulo, valor);
+            email.put(rotulo, valor);
             return true;
         } else {
             return false;
         }
-    }
-
-    private boolean verificarEmail (String valor){
-        String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
-        return valor.matches(eR);
     }
 
     @Override

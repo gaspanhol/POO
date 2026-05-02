@@ -21,6 +21,11 @@ public class Telefones {
         }
     }
 
+    private boolean verificarTelefones (String valor){
+        String eR = "^[0-9]+$";
+        return valor.matches(eR);
+    }
+
     public boolean remove (String rotulo) {
         if (telefones.containsKey(rotulo)) {
             telefones.remove(rotulo);
@@ -32,16 +37,11 @@ public class Telefones {
 
     public boolean update(String rotulo, String valor) {
         if (telefones.containsKey(rotulo) && verificarTelefones(valor)) {
-            telefones.replace(rotulo, valor);
+            telefones.put(rotulo, valor);
             return true;
         } else {
             return false;
         }
-    }
-
-    private boolean verificarTelefones (String valor){
-        String eR = "^[0-9]+$";
-        return valor.matches(eR);
     }
 
     public String formata(String mascara, String valor){
