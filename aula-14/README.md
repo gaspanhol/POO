@@ -44,11 +44,12 @@ classDiagram
     direction LR
     
     Livro "1" *-- "1..." Capitulo
+    Livro "1" o-- "1..*" Autor
     
     class Livro{
         - String titulo
-        - Pessoa autor
-        - Arraylist<Capitulo> capitulos
+        - Autor autor
+        - capitulos: Arraylist<Capitulo>
         + Livro(String t, Pessoa a)
         + adicionaCapitulo(String t) void
     }
@@ -56,5 +57,13 @@ classDiagram
     class Capitulo{
         - String capitulo
         + Capitulo(String t)
+    }
+    
+    class Autor{
+        -String nome
+        -String sobrenome
+        -LocalDate dataNascimento
+        -String Nacionalidade
+        +Autor(String nome, String sobrenome, LocalDate dataNascimento, String nacionalidade)
     }
 ```

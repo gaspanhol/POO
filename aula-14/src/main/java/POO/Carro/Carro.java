@@ -13,7 +13,23 @@ public class Carro {
         propulsor.acelerar(v);
     }
 
+    public int getGiroAtual() {
+        return propulsor.getGiroAtual();
+    }
+
+    public Motor getPropulsor() {
+        return propulsor;
+    }
+
     public void trocarMotor(Motor m){
         this.propulsor = m;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("Marca do Carro: ").append(marca).append("\n");
+        sb.append("Motor do Carro: ").append(propulsor).append("\n");
+        return sb.toString();
     }
 }

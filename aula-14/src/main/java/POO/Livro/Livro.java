@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Livro {
     private String titulo;
-    private Pessoa autor;
+    private Autor autor;
     private ArrayList<Capitulo> capitulos;
 
-    public Livro(String titulo, Pessoa autor) {
+    public Livro(String titulo, Autor autor) {
         this.titulo = titulo;
         this.autor = autor;
         this.capitulos = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Livro {
     }
 
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Livro{");
+        final StringBuilder sb = new StringBuilder();
 
         this.capitulos.forEach(sb::append);
 
