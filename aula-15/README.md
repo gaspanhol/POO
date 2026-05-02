@@ -18,6 +18,7 @@ classDiagram
         - ArrayList~Motor~ motor
         + Aviao (int tripulantes, int maxPassageiros, int maxCombustivel, int numMotor, String tipoMotor)
         + ligadoDesligado() boolean
+        + desligarMotorEspecifico(int numeroMotor) boolean
     }
     
     class Motor {
@@ -25,6 +26,7 @@ classDiagram
         - boolean ligado
         + Motor (String tipo)
         + ligadoDesligado() boolean
+        + isLigado()
     }
 
 ```

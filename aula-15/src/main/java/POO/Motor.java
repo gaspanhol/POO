@@ -18,5 +18,13 @@ public class Motor {
     public boolean isLigado() {
         return ligado;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("\n").append("tipoMotor= ").append(tipoMotor);
+        sb.append(", ligado= ").append(ligado).append("\n");
+        return sb.toString();
+    }
 }
 
