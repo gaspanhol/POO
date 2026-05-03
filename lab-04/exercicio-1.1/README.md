@@ -9,8 +9,8 @@ classDiagram
     direction LR
     
     Cliente "1" *-- "0..*" Pedido
-    Cliente "1" *-- "0..*" endereco
-    Pedido "1" o-- "1..*" Produtos
+    Cliente "1" *-- "1..*" Endereco
+    Pedido "1" o-- "1..*" Produto
     
     class Cliente {
         -nome: String
@@ -18,11 +18,11 @@ classDiagram
         -enderecos: ArrayList<Endereco>
         -pedido: ArrayList<Pedido>
         +Cliente(String nome, String email, Endereco endereco)
-        +addPedido(pedido)
-        +removePedido(pedido)
-        +alterarEmail(String email)
-        +alterarEndereco(enderecos)
-        +consultarPedidos
+        +addPedido(pedido) boolean
+        +removePedido(pedido) boolean
+        +alterarEmail(String email) boolean
+        +alterarEndereco(enderecos) boolean
+        +consultarPedidos() ArrayList<Pedido>
     }
 
     class Endereco {
@@ -37,20 +37,19 @@ classDiagram
     class Pedido {
         -data: LocalDate
         -situacao: String
-        -produto: HashMap<Produtos, qtdProdutos>
-        -qtdProdutos: int
+        -produto: HashMap<Produto, qtdProdutos> 
         +Pedido(data LocalDate, String situacao, qtdProdutos, Produto produto)
+        +AdicionarProduto(int qtdProdutos, Produtos produto)
+        +RemoverProduto(produtos, qtdProdutos) boolean
+        +AlterarData(LocalDate data) boolean
+        +AlterarSituacao(String situacao) boolean
+        +AlterarQuantidadeProdutos(int qtdProdutos)
     }
     
-    class Produtos {
-        -produtos ArrayList<Produtos>
+    class Produto {
         -int qtdEstoque
         -String descricao
         -double preco
-        +Produtos(int qtdEstoque, String descricao, double preco)
+        +Produto(int qtdEstoque, String descricao, double preco)
     }
-    
-
-
-    
 ```
