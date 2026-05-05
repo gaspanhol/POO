@@ -14,15 +14,21 @@ classDiagram
     
     class Cliente {
         -nome: String
+        -sobrenome: String
+        -cpf: String
         -email: String
         -enderecos: ArrayList<Endereco>
-        -pedido: ArrayList<Pedido>
-        +Cliente(String nome, String email, Endereco endereco)
-        +addPedido(pedido) boolean
-        +removePedido(pedido) boolean
-        +alterarEmail(String email) boolean
-        +alterarEndereco(enderecos) boolean
-        +consultarPedidos() ArrayList<Pedido>
+        -pedidos: ArrayList<Pedido>
+        +Cliente(String nome, String sobrenome, String cpf, String email, Endereco endereco)
+        +addPedido(Pedido pedido) boolean
+        +removePedido(int indiceDoPedido) boolean
+        +adicionarProdutoAoPedido(int indicePedido, Produto produto, int qtdProdutos) boolean
+        +removerProdutoDoPedido(int indicePedido, Produto produto, int qtdProdutos) boolean
+        +alterarQuantidadeProdutoDoPedido(int indicePedido, Produto produto, int qtdProdutos) boolean
+        +alterarProdutoDoPedido(int indicePedido, Produto produtoRemovido, Produto novoProduto, int qtdNovoProduto) boolean
+        +addEndereco (Endereco endereco) boolean
+        +alterarEndereco (int indiceDoEndereco, Endereco novoEndereco) boolean
+        +consultarPedidos() String
     }
 
     class Endereco {
@@ -38,12 +44,10 @@ classDiagram
         -data: LocalDate
         -situacao: String
         -produto: HashMap<Produto, qtdProdutos> 
-        +Pedido(data LocalDate, String situacao, qtdProdutos, Produto produto)
-        +AdicionarProduto(int qtdProdutos, Produtos produto)
-        +RemoverProduto(produtos, qtdProdutos) boolean
-        +AlterarData(LocalDate data) boolean
-        +AlterarSituacao(String situacao) boolean
-        +AlterarQuantidadeProdutos(int qtdProdutos)
+        +Pedido(data LocalDate, String situacao, Produto produto, int qtdProdutos)
+        +adicionarProduto(Produto produto, int qtdProdutos)
+        +removerProduto(Produto produto) boolean
+        +alterarQuantidadeProduto (Produto produto, int qtdProduto)
     }
     
     class Produto {

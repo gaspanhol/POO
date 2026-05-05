@@ -1,6 +1,6 @@
 package poo;
 
-public class Main {
+public class App {
     static void main() {
     }
 }
