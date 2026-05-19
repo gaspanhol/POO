@@ -12,6 +12,30 @@ public class SemFio extends Telefone{
         this.distanciaOperacao = distanciaOperacao;
     }
 
+    public double getFrequencia() {
+        return frequencia;
+    }
+
+    public void setFrequencia(double frequencia) {
+        this.frequencia = frequencia;
+    }
+
+    public int getCanais() {
+        return canais;
+    }
+
+    public void setCanais(int canais) {
+        this.canais = canais;
+    }
+
+    public double getDistanciaOperacao() {
+        return distanciaOperacao;
+    }
+
+    public void setDistanciaOperacao(double distanciaOperacao) {
+        this.distanciaOperacao = distanciaOperacao;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("SemFio:\n");
@@ -22,3 +46,4 @@ public class SemFio extends Telefone{
         return sb.toString();
     }
 }
+
