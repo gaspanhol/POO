@@ -49,9 +49,13 @@ public class App {
         vetor[2] = Aragorn;
 
         for (Personagem p: vetor){
-            IO.println(p.mover());
+            IO.println(p.mover()); //polimorfismo
             if (p instanceof Guerreiro g) {
                 IO.println(g.atacar());
+            }
+            if (p instanceof Coletor a) {
+                IO.println(a.coletarMadeira());
+                IO.println(a.coletarOuro());
             }
         }
 
