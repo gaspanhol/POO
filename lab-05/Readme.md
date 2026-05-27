@@ -3,6 +3,8 @@
 ```mermaid
 classDiagram
     
+    direction LR
+    
     Relogio "1" --* "6" Display
     Display "1" --* "7" Segmento
     
@@ -17,18 +19,19 @@ classDiagram
         - displays: ArrayList<Display>
         + desenhar()
         + atualizarHorario()
-        + validarHorario()
-        + validarTamanho()
     }
     
     class Display {
         - segmentos: ArrayList<Segmento>
-        + mostrarNumero(int numero)
+        + criarNumero(int numero)
+        - apagarSegmentos()
+        - ligarSegmentos()
     }
     
     class Segmento {
         - estado: boolean
-        + ligarDesligarSegmento() boolean
+        + ligar() boolean
+        + desligar() boolean
         + isLigado()
     }
 
