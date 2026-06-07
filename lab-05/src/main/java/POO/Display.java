@@ -40,4 +40,8 @@ public class Display {
             segmentos.get(i).ligar();
         }
     }
+
+    public Segmento getSegmentos(int indice) {
+        return segmentos.get(indice);
+    }
 }
