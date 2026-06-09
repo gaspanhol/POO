@@ -11,9 +11,9 @@ public enum Valor {
     OITO(8, "Oito", "8"),
     NOVE(9, "Nove", "9"),
     DEZ(10, "Dez", "10"),
-    J(11, "Valete", "11"),
-    Q(12, "Dama", "12"),
-    K(13,"Rei", "13");
+    J(11, "Valete", "j"),
+    Q(12, "Dama", "q"),
+    K(13,"Rei", "k");
 
     public final int valor;
     public final String extenso;
