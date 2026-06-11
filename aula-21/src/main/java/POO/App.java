@@ -10,7 +10,7 @@ public class App implements DrawListener{
 
     private ArrayList<CartaGrafica> baralhoGrafico = new ArrayList<>();
 
-    CartaGrafica asOuros = new CartaGrafica(Naipes.OUROS, Valor.AS, 600, 400);
+//    CartaGrafica asOuros = new CartaGrafica(Naipes.OUROS, Valor.AS, 600, 400);
 
     public App(){
         this.draw = new Draw();
@@ -23,12 +23,13 @@ public class App implements DrawListener{
         this.draw.addListener(this);
         // TODO tratamento de excessão, desenhar uma carta através de UTF8 no console se ele não achar a imagem da carta
 
-        int x = 200;
+        int x = 100;
         for (Naipes n : Naipes.values()){
             for (Valor v : Valor.values()) {
                 this.baralhoGrafico.add(new CartaGrafica(n,v,x,400));
                 x += 20;
             }
+
         }
 
         for (CartaGrafica c : baralhoGrafico) {
@@ -36,12 +37,18 @@ public class App implements DrawListener{
         }
 
         //Criando cartas gráficas
-        asOuros.desenhar(draw);
+//        asOuros.desenhar(draw);
     }
 
     @Override
     public void mouseClicked(double x, double y) {
-        asOuros.clicouDentro(x,y,draw);
+
+        for(CartaGrafica c: baralhoGrafico){
+            if (c.clicouDentro(x, y)){
+                c.desenhar(this.draw);
+            }
+
+        }
     }
 
     static void main() {
