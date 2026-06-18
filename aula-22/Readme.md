@@ -5,13 +5,14 @@ classDiagram
     
     Biblioteca o-- Livros
     Biblioteca o-- Pessoa
-    BibliotecaException --|> TentativaEmprestimoException
-    BibliotecaException --|> TentativaDevolucaoException
-    BibliotecaException --|> LimiteEmprestimosException
+    BibliotecaException <|-- TentativaEmprestimoException
+    BibliotecaException <|-- TentativaDevolucaoException
+    BibliotecaException <|-- LimiteEmprestimosException
     
     class Biblioteca {
         - nome : String
         - livros : ArrayList ~Livros~
+        - pessoas : ArrayList ~Pessoa~
         + adicionarLivro (Livro livro) boolean
         + devolverLivro (String ISBN) void
         + emprestarLivro (String ISBN) void
